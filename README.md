@@ -55,3 +55,50 @@ progress.max = song.duration
 progress.value = song.currentTime
 
 *progress.value means the value of the range. song.currentTime shows us current time of the song. So if the max value of the range is 300, and the current time of a song is 30, the pointer of range will be at 30/300 * 100 per sent of the whole range*
+
+<!-- 5 -->
+**Create a function to play and pause the song**
+
+playPauseCon.onclick = () => playPause() 
+
+function playPause() {
+    if(playBtn.classList.contains('fa-pause')) {
+        song.pause()
+        playBtn.classList.remove('fa-pause')
+        playBtn.classList.add('fa-play')
+    }
+}
+
+*That function works every time when we cliick the Play or Pause button. When we click the button and the current button id pause, it means that the song is already playing, therefore, we stop the audio with song.stop()Then we change the pause button into play button.*
+
+else {
+    song.play()
+    playBtn.classList.add('fa-pause')
+    playBtn.classList.remove('fa-play')
+}
+
+*If the button is play button, that means that audio is not playing, so we have to play it and change the button*
+
+<!-- 6 -->
+**Attach the range's value to the audio's time**
+
+if(song.play) {
+    setInterval(() => {
+        progress.value = song.currentTime
+    }, 500)
+}
+
+*That block runs if the song is playing. What does setInterval do?*
+
+*setInterval is a function, that runs another function in a certain period of time. In  the first parametr we set the function we want to run, in the second, the time interval in mili seconds*
+
+*In our code the function works every 500 milisecond until the song is playing*
+
+<!-- 7 -->
+**Attaching the current time to the range's changes**
+
+progress.onchange = function() {
+    song.currentTime = progress.value
+}
+
+*We change the song's time every time we change the range*
