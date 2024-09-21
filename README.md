@@ -41,3 +41,17 @@ const playBtn = document.getElementById('playBtn')
 song.onloadedmetadata = function() {}
 
 *We use that function that attached to the var, runs when the audio starts playing*
+
+<!-- 3 -->
+**Set progress range's maximum value as a sing's duration**
+
+progress.max = song.duration
+
+*progress.max means the max value of the range, or progress bar. song.duration means the duration of an auido that we play in seconds*
+
+<!-- 4 -->
+**Attach audio's current time to the range's value**
+
+progress.value = song.currentTime
+
+*progress.value means the value of the range. song.currentTime shows us current time of the song. So if the max value of the range is 300, and the current time of a song is 30, the pointer of range will be at 30/300 * 100 per sent of the whole range*
