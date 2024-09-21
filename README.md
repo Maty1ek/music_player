@@ -71,6 +71,8 @@ function playPause() {
 
 *That function works every time when we cliick the Play or Pause button. When we click the button and the current button id pause, it means that the song is already playing, therefore, we stop the audio with song.stop()Then we change the pause button into play button.*
 
+*playBtn.classList.contains() checks if the elemant contains specified class*
+
 else {
     song.play()
     playBtn.classList.add('fa-pause')
@@ -102,3 +104,29 @@ progress.onchange = function() {
 }
 
 *We change the song's time every time we change the range*
+
+<!-- TIPS -->
+**Tips**
+
+progress.oninput = function() {
+    song.currentTime = progress.value
+}
+
+*Its better to use oninput, because it works more correctly*
+
+<!-- 8 -->
+**Add event listener to "Space" keyboard button**
+
+document.addEventListener('keydown', (e) => {
+    if(e.code === 'Space') {
+        playPauseFunc()
+    }
+})
+
+*That lines mean that if I will press "Space button, the song will either stop, or play.*
+
+*document is an object of the whole web-site, which is located in global object "window" and have literally everything in web-page. So when we press any button on our keyboard, we can attach an evemt listener such as "keydown" to the document object*
+
+*In this case, the code will work, if we press the "Space" Button*
+
+*e.code is a type of button we pressed.*
